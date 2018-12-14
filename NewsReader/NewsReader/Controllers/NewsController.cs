@@ -18,16 +18,19 @@ namespace NewsReader.Controllers
             news = new News_BL();
         }
 
+        //get 3 random news
         public IEnumerable<News> GetAllNews()
         {
             return news.GetImportantNews();
         }
 
+        //filter news by date and title
         public IEnumerable<News> PostFilteredNews(FilterNewsVM model)
         {
             return news.GetFilteredNews(model);
         }
 
+        //get 5 last news
         public IEnumerable<News> GetLastNews()
         {
             return news.GetLastNews();
