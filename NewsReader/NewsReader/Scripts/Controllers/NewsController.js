@@ -3,6 +3,7 @@
     $scope.filteredNews = [];
     $scope.lastNews = [];
     $scope.showMain = true;
+    $scope.create = {};
 
     //Get 3 random news
     function getNews() {
@@ -22,8 +23,9 @@
     }
 
     //get filtered news
-    function getFilteredNews() {
-        newsFactory.getFiltered(function (error, resp) {
+    $scope.getFilteredNews = function () {
+        var data = getFilterData();
+        newsFactory.getFiltered(data, function (error, resp) {
             if (error) {
                 alert("Error al recuperar las noticias");
                 return;
@@ -34,12 +36,12 @@
                 return;
             }
 
-            $scope.filteredNews = resp.data;
+            $scope.lastNews = resp.data;
         });
     }
 
     //get 5 recent news
-    function getLastNews() {
+    $scope.getLastNews = function () {
         newsFactory.getLastNews(function (error, resp) {
             if (error) {
                 alert("Error al recuperar las noticias");
@@ -55,6 +57,16 @@
         });
     }
 
+    //get data to filter
+    function getFilterData() {
+        return {
+            Title: $scope.create.title,
+            StartDate: $scope.create.startDate,
+            EndDate: $scope.create.endDate
+        };
+    }
+
+
     getNews();
-    getLastNews();
+    $scope.getLastNews();
 }]);

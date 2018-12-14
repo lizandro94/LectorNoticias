@@ -30,9 +30,10 @@ namespace NewsReader.BusinessLayer
         public IEnumerable<News> GetFilteredNews(FilterNewsVM filter)
         {
             var ImportantNews = db.News.Where(elem => 
-                                    elem.Title == filter.Title 
+                                    elem.Title.Contains(filter.Title)
                                     && elem.PublicationDate > filter.StartDate
                                     && elem.PublicationDate < filter.EndDate);
+            
             return ImportantNews;
         }
 

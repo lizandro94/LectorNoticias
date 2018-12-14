@@ -21,28 +21,27 @@
 
     <div ng-if="!showMain">
         <h3>Filtrar noticias</h3>
-        <form>
+        <form ng-submit="getFilteredNews()">
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Titulo</label>
-                    <input id="title" type="text" class="form-control" placeholder="Titulo" required>
+                    <input ng-model="create.title" type="text" class="form-control" placeholder="Titulo" required>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Fecha desde:</label>
-                    <input id="startDate" type="date" class="form-control" placeholder="Fecha desde" required>
+                    <input id="startDate" ng-model="create.startDate" type="date" class="form-control" placeholder="Fecha desde" required>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Fecha Hasta:</label>
-                    <input id="endDate" type="date" class="form-control" placeholder="Fecha hasta" required>
+                    <input id="endDate" ng-model="create.endDate" type="date" class="form-control" placeholder="Fecha hasta" required>
                 </div>
             </div>
-
-
-            <button ng-click="filter()" class="btn btn-primary">Filtrar</button>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+            <button type="button" ng-click="getLastNews()" class="btn btn-default">Mostrar 5 noticias recientes</button>
             <br />
             <br />
         </form>

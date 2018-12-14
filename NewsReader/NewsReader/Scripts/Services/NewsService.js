@@ -10,7 +10,7 @@
                 });
         },
         getFiltered: function (data, callBack) {
-            $http.post("/api/News", data).then(
+            $http.post("/api/News/PostFilteredNews", data).then(
                 function (resp) {
                     callBack(null, resp);
                 },
