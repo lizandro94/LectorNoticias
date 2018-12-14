@@ -6,15 +6,59 @@
 
     <div class="jumbotron">
         <h1>Noticias</h1>
-        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Buscar noticias</a></p>
+        <button ng-disabled="showMain == false" ng-click="showMain = false" class="btn btn-primary btn-lg">Filtrar noticias</button>
+        <button ng-disabled="showMain == true" ng-click="showMain = true" class="btn btn-primary btn-lg">Ver destacadas</button>
     </div>
-    <div class="row">
+    <div ng-if="showMain" class="row">
+        <h3>Noticias destacadas</h3>
         <div ng-repeat="elem in importantNews" class="col-md-4">
             <img class="img-responsive" src="{{elem.Image}}" alt="{{elem.Title}}" />
             <h2>{{elem.Title}}</h2>
             <b>{{elem.PublicationDate}}</b>
             <div>{{elem.Content}}</div>
+        </div>
+    </div>
+
+    <div ng-if="!showMain">
+        <h3>Filtrar noticias</h3>
+        <form>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Titulo</label>
+                    <input id="title" type="text" class="form-control" placeholder="Titulo" required>
+                </div>
             </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Fecha desde:</label>
+                    <input id="startDate" type="date" class="form-control" placeholder="Fecha desde" required>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Fecha Hasta:</label>
+                    <input id="endDate" type="date" class="form-control" placeholder="Fecha hasta" required>
+                </div>
+            </div>
+
+
+            <button ng-click="filter()" class="btn btn-primary">Filtrar</button>
+            <br />
+            <br />
+        </form>
+
+        <div class="row">
+            <div ng-repeat="elem in lastNews" class="col-md-4">
+                <img class="img-responsive" src="{{elem.Image}}" alt="{{elem.Title}}" />
+                <h2>{{elem.Title}}</h2>
+                <b>{{elem.PublicationDate}}</b>
+                <div>{{elem.Content}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+
     </div>
 </section>
     

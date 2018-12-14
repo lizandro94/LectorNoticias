@@ -35,6 +35,12 @@ namespace NewsReader.BusinessLayer
                                     && elem.PublicationDate < filter.EndDate);
             return ImportantNews;
         }
+
+        public IEnumerable<News> GetLastNews()
+        {
+            var LastNews = db.News.OrderByDescending(elem => elem.PublicationDate).Take(5);
+            return LastNews;
+        }
     }
 
     public class FilterNewsVM

@@ -27,5 +27,10 @@ namespace NewsReader.Controllers
         {
             return news.GetFilteredNews(model);
         }
+
+        public IEnumerable<News> GetLastNews()
+        {
+            return news.GetLastNews();
+        }
     }
 }
