@@ -10,6 +10,7 @@ namespace NewsReader.Models
     {
         public NewsModel() : base("NewsDB")
         {
+            //Initializer to seed News
             Database.SetInitializer(new NewsDBInitializer());
         }
 
