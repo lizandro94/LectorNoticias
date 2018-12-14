@@ -22,6 +22,11 @@ namespace NewsReader
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/news").Include(
+                      "~/Scripts/Modules/NewsModule.js",
+                      "~/Scripts/Controllers/NewsController.js",
+                      "~/Scripts/Services/NewsService.js"));
         }
     }
 }
