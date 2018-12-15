@@ -43,14 +43,4 @@ namespace NewsReader.BusinessLayer
             return LastNews;
         }
     }
-
-    public class FilterNewsVM
-    {
-        [Required]
-        public string Title { get; set; }
-        [Required]
-        public DateTime StartDate { get; set; }
-        [Required]
-        public DateTime EndDate { get; set; }
-    }
 }
